@@ -17,3 +17,5 @@ Nowadays, I just finished my master's degree at NYU. The last final project I ha
 |Price-Volume Correlation|The rolling covariance of the cross-section rank of the stock’s adjusted price and volume with a 1-month window.|
 |Reverse|The rolling max percentage drawdown of the stock’s adjusted price with a 1-month window.|
 |Volume Spike|Daily volume divided by its 5-day moving average.|
+
+![](https://github.com/yuba316/Alpha_Strategy_BackTest_System/blob/main/figure/factor_mkt.png)
