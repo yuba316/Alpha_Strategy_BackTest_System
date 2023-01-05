@@ -15,7 +15,7 @@ There are 2 types of data, stock data and market data. Stock data, like daily re
 In this case, since the number of data I used is limited, I didn't create a new class for data storage. I stored every new data as a column in the member variable, ***self.df(index=[Date, Ticker])***, of ***class "FactorDeveloper"***. Use ***self.df[column].unstack()*** to get the structured stock data.
 
 #### 2. Factor Developing
-Since each company would have a different factor score every day, basically speaking, each factor is a special stock data.
+Since each company would have a different factor score every day, basically speaking, each factor is just a special stock data. You probably need another ***class “Operator”*** to help you achieve various calculation. Use ***.rolling(window)*** to achieve time-series calculation.
 
 ### Factor
 |Factor|Definition (See *class “FactorDeveloper”*)|
