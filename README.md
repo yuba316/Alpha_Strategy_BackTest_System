@@ -19,3 +19,5 @@ Nowadays, I just finished my master's degree at NYU. The last final project I ha
 |Volume Spike|Daily volume divided by its 5-day moving average.|
 
 ![](https://github.com/yuba316/Alpha_Strategy_BackTest_System/blob/main/figure/factor_mkt.png)
+![](https://github.com/yuba316/Alpha_Strategy_BackTest_System/blob/main/figure/factor_hedge.png)
+![](https://github.com/yuba316/Alpha_Strategy_BackTest_System/blob/main/figure/factor_corr.png)
