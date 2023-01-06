@@ -17,6 +17,9 @@ In this case, since the number of data I used is limited, I didn't create a new 
 #### 2. Factor Developing
 Since each company would have a different factor score every day, basically speaking, each factor is just a special stock data. You probably need another ***class “Operator”*** to help you achieve various calculation. Use ***.rolling(window)*** to achieve time-series calculation.
 
+#### 3. Daily Regression
+The key of an Alpha strategy is how to generate tomorrow's positions with today's factor scores. One easy way is to directly rank today's factor scores, and the weight of each stock is proportional to its rank. This method requires a linear alpha factor, but most of the time, factors are nonlinear. So, we need different machine learning algorithms to achieve nonlinear regression of tomorrow's return (Y) on today's factor scores (X). Use the rank of tomorrow's predicted return to generate positions.
+
 ### Factor
 |Factor|Definition (See *class “FactorDeveloper”*)|
 |---|---|
