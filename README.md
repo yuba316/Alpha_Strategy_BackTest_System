@@ -27,6 +27,10 @@ Next question is to transform rank into position of each stock. There are 2 fact
 - Long: 1. unitize: $rank = \frac{rank - min(rank)}{max(rank) - min(rank)}$ -> [0, 1]; 2. Long Top p%: $rank = rank$ if $rank > p$ else $0$; 3. sum to 1: $weight = \frac{rank}{\sum{ABS(rank)}}$
 
 #### 4. Daily BackTest
+The position of each stock is daily updated by ***class "DailyReg"***, so in ***class "DailyBackTest"***, what we need to do is 1. calculate daily profit, 2. change positions, and 3. calculate trading cost:
+- Profit: If all positions remain unchanged, today's total profit $Profit_{t} = \sum{(Position_{t-1}\times (Close_{t}-Close_{t-1}))}$
+- Position: For those positions changed, we need to cover the old position, so the price for calculating profit should be $Execution_{t}$ instead of $Close_{t}$. We call this part of difference ***Execution Loss***, and you can design your own execution algorithm in ***function "self.get_exe_price"*** to shrink this loss. Besides, opening a new position with large volume could also bring price impact, and together with the other trading fee, we call them ***Trading Cost***. We assume that price impact $f(Position_{t}) = \sigma_{t} * \sqrt{\frac{|Position_{t}|}{Volume_{t}}}$ for each unit of positions, and you can design your own price impact function in ***function "self.get_trading_cost"***.
+- Trading Cost: $Profit = Profit - Execution Loss - Trading Cost$
 
 ### Factor
 |Factor|Definition (See *class “FactorDeveloper”*)|
