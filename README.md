@@ -20,6 +20,8 @@ Since each company would have a different factor score every day, basically spea
 #### 3. Daily Regression
 The key of an Alpha strategy is how to generate tomorrow's positions with today's factor scores. One easy way is to directly rank today's factor scores, and the weight of each stock is proportional to its rank. This method requires a linear alpha factor, but most of the time, factors are nonlinear. So, we need different machine learning algorithms to achieve nonlinear regression of tomorrow's return (Y) on today's factor scores (X). Use the rank of tomorrow's predicted return to generate positions.  
   
+Next question is to transform rank into position of each stock.
+  
 ***class "DailyReg"*** takes yesterday's factor scores, today's returns (***df***), and today's factor scores (***td_alpha***) as input. ***df*** is used in training today's regression model, and with ***td_alpha***, we can predict tomorrow's returns. One thing need noticing is the data quality we put into training the model. Some factors have a large number of nan values, so should we drop these factors? Or, how do we fill nan values? Besides, some stocks have no factor value today, so should we fill them with yesterday's values? Or, leave them 0 to cover all of their positions?
 
 ### Factor
