@@ -31,6 +31,8 @@ The position of each stock is daily updated by ***class "DailyReg"***, so in ***
 - Profit: If all positions remain unchanged, today's total profit $Profit_{t} = \sum{(Position_{t-1}\times (Close_{t}-Close_{t-1}))}$
 - Position: For those positions changed, we need to cover the old position, so the price for calculating profit should be $Execution_{t}$ instead of $Close_{t}$. We call this part of difference ***Execution Loss***, and you can design your own execution algorithm in ***function "self.get_exe_price"*** to shrink this loss. Besides, opening a new position with large volume could also bring price impact, and together with the other trading fee, we call them ***Trading Cost***. We assume that price impact $f(Position_{t}) = \sigma_{t} * \sqrt{\frac{|Position_{t}|}{Volume_{t}}}$ for each unit of positions, and you can design your own price impact function in ***function "self.get_trading_cost"***.
 - Trading Cost: $Profit = Profit - Execution Loss - Trading Cost$
+  
+While changing positions, some stocks can have nan values in their new positions or today's close price due to a nan value factor score, suspended or delisted. In this case, a simple method is to remain positions unchanged and assume that there is no profit or loss for these special stocks. Use ***.groupby(Date)[Ticker].count()*** to check the number of tradable stocks every day, and apply your own method to deal with the change of the daily universe. 
 
 ### Factor
 |Factor|Definition (See *class “FactorDeveloper”*)|
